@@ -1,0 +1,97 @@
+-- Homework for Lesson #4 
+-- Part #1 classicmodels database 
+-- (write sql for #6, 8, 9, 10, 11, 14, 16, 17, 21) -- easy questions
+
+-- 6.which vendor sells 1966 Shelby Cobra?
+
+SELECT prod.productVendor, prod.productName
+FROM classicmodels.products prod
+WHERE prod.productName LIKE '%1966 Shelby Cobra%';
+
+-- 8.which product is the most and least expensive?
+
+SELECT msrp as mostexp, productName
+FROM classicmodels.products
+ORDER BY msrp desc
+LIMIT 1;
+
+-- 9.which product has the most quantityInStock?
+
+SELECT productName, quantityInStock
+FROM classicmodels.products
+ORDER BY quantityInStock desc
+LIMIT 1;
+
+-- 10.list all products that have quantity in stock less than 20
+
+SELECT produuctName, quantityInStock
+FROM classicmodels.products
+WHERE quantityInStock < 20;
+
+-- 11.which customer has the highest and lowest credit limit?
+
+SELECT customerNumber, creditLimit as highestLimit
+FROM classicmodels.customers
+ORDER BY creditlimit desc
+LIMIT 1;
+
+
+-- 14.customers in what city are the most profitable to the company?
+
+SELECT c.city, c.customerNumber, p.amount as payedAmount
+FROM classicmodels.customers c
+JOIN classicmodels.payments p ON c.customerNumber = p.customerNumber
+ORDER BY p. amount desc
+LIMIT 1;
+
+
+-- 16.who is the best customer?
+
+SELECT c.customerName as BestCustomer, p.amount as amountPayed
+FROM classicmodels.payments p
+JOIN classicmodels.customers c
+ON p.customerNumber=c.customerNamber
+ORDER BY amount desc
+LIMIT 1;
+
+-- 17.customers without payment
+
+SELECT c.customerName, c.cudtomerName, p.amount
+FROM classicmodels.customers c
+LEFT JOIN classicmodels.payments p 
+ON c.customerNumber = p.customerNumber
+WHERE p.amount is Null;
+
+
+-- 21.list all employees by their (full name: first + last) in alpabetical order
+
+SELECT
+CONCAT(lastName, ' ', firstName) as fullName
+FROM classicmodels.employees
+ORDER BY fullName;
+
+
+-- Part #2  -- library_simple database
+
+-- 1.find all information (query each table seporately for book_id = 252)
+select * from library_simple.book c where id = 252;
+select * from library_simple.author_has_book b where book_id = 252;
+select * from library_simple.author a where id (750, 770, 794);
+select * from library_simple.copy f where book_id=252;
+select * from library_simple.issuance g where copy_id=252;
+select * from library_simple.category_has_book d where book_id=252;
+select * from library_simple.category e where id in (46,142);
+select * from library_simple.reader h where id = 234;
+select * from library_simple.issuance g where reader_id = 234;
+
+-- 2.which books did Van Parks write?
+
+select a.id, a.first_name, a.last_name,
+b.author_id, b.book_id,
+c.id, c.ISBN, c.name, c.page_num, c.pub_year
+from library_simple.author a
+join library_simple.author_has_book b
+on a.id = b.author_id
+join library_simple.book c
+on b.book_if = c.id
+where a.first_name = 'Van' and a.last_name = 'Parks';
