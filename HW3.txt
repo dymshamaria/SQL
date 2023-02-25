@@ -4,8 +4,8 @@
  
 -- 	1. Add column 'country' to dept table in mywork database
 
-    select * from mywork.dept;
-    alter table mywork.dept add column country varchar (10);
+select * from mywork.dept;
+alter table mywork.dept add column country varchar (10);
     
 -- 	2. Rename column 'loc' to 'city'
 
@@ -27,7 +27,6 @@ from mywork.dept
 where city = 'ATLANTA'; 
 
 --     Save your work in Homework3_Answers.sql
-
 
 -- Part 2  - library_simple database
 -- Write sql 
