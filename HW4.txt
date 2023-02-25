@@ -1,4 +1,5 @@
 -- Homework for Lesson #4 
+
 -- Part #1 classicmodels database 
 -- (write sql for #6, 8, 9, 10, 11, 14, 16, 17, 21) -- easy questions
 
@@ -35,7 +36,6 @@ FROM classicmodels.customers
 ORDER BY creditlimit desc
 LIMIT 1;
 
-
 -- 14.customers in what city are the most profitable to the company?
 
 SELECT c.city, c.customerNumber, p.amount as payedAmount
@@ -43,7 +43,6 @@ FROM classicmodels.customers c
 JOIN classicmodels.payments p ON c.customerNumber = p.customerNumber
 ORDER BY p. amount desc
 LIMIT 1;
-
 
 -- 16.who is the best customer?
 
@@ -62,14 +61,12 @@ LEFT JOIN classicmodels.payments p
 ON c.customerNumber = p.customerNumber
 WHERE p.amount is Null;
 
-
 -- 21.list all employees by their (full name: first + last) in alpabetical order
 
 SELECT
 CONCAT(lastName, ' ', firstName) as fullName
 FROM classicmodels.employees
 ORDER BY fullName;
-
 
 -- Part #2  -- library_simple database
 
