@@ -65,7 +65,6 @@ group by prod.productCode
 order by prod_cnt desc
 limit 1;
 
-
 -- 5.how much money was made between buyPrice and MSRP?
 
 select SUM(prod.msrp * det.quantityOrdered) as msrp_sales,
@@ -184,6 +183,3 @@ SELECT
 CONCAT(lastName, ' ', firstName) as fullName
 FROM classicmodels.employees
 ORDER BY fullName;
-
-
-
