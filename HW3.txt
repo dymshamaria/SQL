@@ -14,16 +14,15 @@ alter table mywork.dept rename column loc to city;
 -- 	3. Add three more departments: HR, Engineering, Marketing
 
 insert into mywork.dept (deptno, dname, city)
-values 
-(5, 'HR', 'MOSCOW'); 
-(6, 'ENGINNERING', 'MOSCOW'); 
-(7, 'MARKETING', 'SAN DIEGO');
+values (5, 'HR', 'MOSCOW');
+       (6, 'ENGINNERING', 'MOSCOW'); 
+       (7, 'MARKETING', 'SAN DIEGO');
+       
 select * from mywork.dept; 
 
 -- 	4. Write sql statement to show which department is in Atlanta
 
-select deptno, dname, city
-from mywork.dept
+select deptno, dname, city from mywork.dept
 where city = 'ATLANTA'; 
 
 --     Save your work in Homework3_Answers.sql
@@ -38,8 +37,10 @@ where last_name = 'Swanson'
 
 -- 	2. How many pages are in Men Without Fear book?
 
-select name, page_num from library_simple.book where name = 'Men Without Fear';
+select name, page_num from library_simple.book
+where name = 'Men Without Fear';
 
 -- 	3. Show all book categories that start with with letter 'W'
 
-select * from library_simple.category where name like "W%';
+select * from library_simple.category 
+where name like "W%';
