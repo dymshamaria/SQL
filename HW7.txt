@@ -51,4 +51,3 @@ where word in
 
 select * from dictionary.english_dictionary_master
 limit 25;
-
