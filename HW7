@@ -1,20 +1,10 @@
 -- Homework #7 
--- Data Cleaning Project - English Dicionary
--- Import two files english_dictionary_master.csv and english_dictionary_most_common_words.csv
--- (Source: http://www.rupert.id.au/resources/1000-words.php)
--- 1.Edit - Preferences - SQL Editor - change RDBMS timout connection to 600
 -- 2.Create database Dictionary;
-
 create database Dictionary;
 
--- 3.Right click on database dictinary - Table Data Import Wizard - dictionary.english_dictionary_master - Next
--- Right click on database dictinary - Table Data Import Wizard - dictionary.english_dictionary_most_common_words - Next
--- Get to know the data: n - noun, a - adjective, v - verb, adverb, preposition
 -- 4.Show counts of both tables
-
 select count(*) from dictionary.english_dictionary_master
 select count(*) from dictionary.english_dictionary_most_common_words
-
 select * from dictionary.english_dictionary_master
 limit 25;
 
@@ -22,7 +12,6 @@ select * from dictionary.english_dictionary_most_common_words
 limit 25;
 
 -- 5.Create copies of both tables just in case you accidentally delete the originals
-
 create table dictionary.english_dictionary_master_copy
 as select * from dictionary.english_dictionary_master;
 
@@ -30,18 +19,15 @@ create table dictionary.english_dictionary_most_common_words_copy
 as select * from dictionary.english_dictionary_most_common_words;
 
 -- 6.Rename column type to word_type and definition to word_def
-
 alter table dictionary.english_dictionary_master rename column type to word_type;
 alter table dictionary.english_dictionary_master rename column definition to word_def;
 
 -- 7.Update column word_type and word_def to remove " and .
-
 update table dictionary.english_dictionary_master set word_type = replace(word_type, '""', '');
 update table dictionary.english_dictionary_master set word_type = replace(word_type, '.', '');
 update dictionary.english_dictionary_master set word_def = replace(word_def, '""', '');
 
 -- 8.Add column is_common to master table and update this column with 'yes' for common words 
-
 alter table dictionary.english_dictionary_master add column is_common varchar (6);
 
 update dictionary.english_dictionary_master
