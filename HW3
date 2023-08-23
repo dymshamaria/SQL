@@ -1,5 +1,4 @@
 -- Homework #3  
- 
 -- 	1. Add column 'country' to dept table in mywork database
 select * from mywork.dept;
 alter table mywork.dept add column country varchar (10);
@@ -17,7 +16,6 @@ select * from mywork.dept;
 -- 	4. Write sql statement to show which department is in Atlanta
 select deptno, dname, city from mywork.dept
 where city = 'ATLANTA'; 
-
 ________________________________________________________________________________
 
 -- 	1. What is the first name of the author with the last name Swanson?
