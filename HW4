@@ -7,7 +7,7 @@ WHERE prod.productName LIKE '%1966 Shelby Cobra%';
 -- 8.which product is the most and least expensive?
 SELECT msrp as mostexp, productName
 FROM classicmodels.products
-ORDER BY msrp desc
+ORDER BY mostexp desc
 LIMIT 1;
 
 -- 9.which product has the most quantityInStock?
@@ -24,56 +24,80 @@ WHERE quantityInStock < 20;
 -- 11.which customer has the highest and lowest credit limit?
 SELECT customerNumber, creditLimit as highestLimit
 FROM classicmodels.customers
-ORDER BY creditlimit desc
+ORDER BY highestLimit desc
 LIMIT 1;
 
 -- 14.customers in what city are the most profitable to the company?
 SELECT c.city, c.customerNumber, p.amount as payedAmount
-FROM classicmodels.customers c
-JOIN classicmodels.payments p ON c.customerNumber = p.customerNumber
-ORDER BY p. amount desc
+FROM classicmodels.customers as c
+JOIN classicmodels.payments as p 
+ON c.customerNumber = p.customerNumber
+ORDER BY payedAmount desc
 LIMIT 1;
 
 -- 16.who is the best customer?
 SELECT c.customerName as BestCustomer, p.amount as amountPayed
-FROM classicmodels.payments p
-JOIN classicmodels.customers c
+FROM classicmodels.payments as p
+JOIN classicmodels.customers as c
 ON p.customerNumber=c.customerNamber
-ORDER BY amount desc
+ORDER BY amountPayed desc
 LIMIT 1;
 
 -- 17.customers without payment
-SELECT c.customerName, c.cudtomerName, p.amount
-FROM classicmodels.customers c
-LEFT JOIN classicmodels.payments p 
+SELECT c.customerNumber, c.customerName, p.amount
+FROM classicmodels.customers as c
+LEFT JOIN classicmodels.payments as p 
 ON c.customerNumber = p.customerNumber
-WHERE p.amount is Null;
+WHERE p.amount is null;
 
 -- 21.list all employees by their (full name: first + last) in alpabetical order
-SELECT
-CONCAT(lastName, ' ', firstName) as fullName
+SELECT CONCAT(lastName, ' ', firstName) as fullName
 FROM classicmodels.employees
 ORDER BY fullName;
 ________________________________________________________________________________
 
 -- 1.find all information (query each table seporately for book_id = 252)
-select * from library_simple.book c where id = 252;
-select * from library_simple.author_has_book b where book_id = 252;
-select * from library_simple.author a where id (750, 770, 794);
-select * from library_simple.copy f where book_id=252;
-select * from library_simple.issuance g where copy_id=252;
-select * from library_simple.category_has_book d where book_id=252;
-select * from library_simple.category e where id in (46,142);
-select * from library_simple.reader h where id = 234;
-select * from library_simple.issuance g where reader_id = 234;
+select * 
+from library_simple.book as c 
+where id = 252;
+
+select * 
+from library_simple.author_has_book as b 
+where book_id = 252;
+
+select * 
+from library_simple.author as a 
+where id in (750, 770, 794);
+
+select * 
+from library_simple.copy as f 
+where book_id=252;
+
+select * 
+from library_simple.issuance as g 
+where copy_id=252;
+
+select * 
+from library_simple.category_has_book as d 
+where book_id=252;
+
+select * 
+from library_simple.category as e 
+where id in (46,142);
+
+select * 
+from library_simple.reader as h 
+where id = 234;
+
+select * 
+from library_simple.issuance as g 
+where reader_id = 234;
 
 -- 2.which books did Van Parks write?
-select a.id, a.first_name, a.last_name,
-b.author_id, b.book_id,
-c.id, c.ISBN, c.name, c.page_num, c.pub_year
-from library_simple.author a
-join library_simple.author_has_book b
+select a.id, a.first_name, a.last_name, b.author_id, b.book_id, c.id, c.ISBN, c.name, c.page_num, c.pub_year
+from library_simple.author as a
+join library_simple.author_has_book as b
 on a.id = b.author_id
-join library_simple.book c
-on b.book_if = c.id
+join library_simple.book as c
+on b.book_id = c.id
 where a.first_name = 'Van' and a.last_name = 'Parks';
