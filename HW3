@@ -1,6 +1,7 @@
 -- Homework #3  
 -- 	1. Add column 'country' to dept table in mywork database
-select * from mywork.dept;
+select * 
+from mywork.dept;
 alter table mywork.dept add column country varchar (10);
     
 -- 	2. Rename column 'loc' to 'city'
@@ -8,24 +9,28 @@ alter table mywork.dept rename column loc to city;
 
 -- 	3. Add three more departments: HR, Engineering, Marketing
 insert into mywork.dept (deptno, dname, city)
-values (5, 'HR', 'MOSCOW');
-       (6, 'ENGINNERING', 'MOSCOW'); 
+values (5, 'HR', 'MOSCOW'),
+       (6, 'ENGINNERING', 'MOSCOW'), 
        (7, 'MARKETING', 'SAN DIEGO');
 select * from mywork.dept; 
 
 -- 	4. Write sql statement to show which department is in Atlanta
-select deptno, dname, city from mywork.dept
+select deptno, dname, city 
+from mywork.dept
 where city = 'ATLANTA'; 
 ________________________________________________________________________________
 
 -- 	1. What is the first name of the author with the last name Swanson?
-select * from library_simply.author 
+select * 
+from library_simple.author 
 where last_name = 'Swanson';
 
 -- 	2. How many pages are in Men Without Fear book?
-select name, page_num from library_simple.book
+select name, page_num 
+from library_simple.book
 where name = 'Men Without Fear';
 
 -- 	3. Show all book categories that start with with letter 'W'
-select * from library_simple.category 
-where name like "W%';
+select * 
+from library_simple.category 
+where name like 'W%';
