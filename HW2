@@ -1,18 +1,22 @@
 -- Homework #2
 -- show all customers in Australia
-select * from classicmodels.customers
+select * 
+from classicmodels.customers
 where country = 'Australia';
 
 -- show First and Last name of customers in Melbourne
-select * from classicmodels.customers
+select * 
+from classicmodels.customers
 where city like '%lbo%';
 
 -- show all customers with Credit Limit over $200,000
-select * from classicmodels.customers
+select * 
+from classicmodels.customers
 where CreditLimit > 200000;
 
 -- who is the president of the company?
-select * from classicmodels.employees
+select * 
+from classicmodels.employees
 where jobTitle > 'President';
 
 -- how many Sales Reps are in the company?
