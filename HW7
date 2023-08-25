@@ -1,14 +1,18 @@
 -- Homework #7 
--- 2.Create database Dictionary;
+-- 2.Create database Dictionary
 create database Dictionary;
 
 -- 4.Show counts of both tables
-select count(*) from dictionary.english_dictionary_master
-select count(*) from dictionary.english_dictionary_most_common_words
-select * from dictionary.english_dictionary_master
+select count(*) 
+from dictionary.english_dictionary_master
+select count(*) 
+from dictionary.english_dictionary_most_common_words
+select * 
+from dictionary.english_dictionary_master
 limit 25;
 
-select * from dictionary.english_dictionary_most_common_words
+select * 
+from dictionary.english_dictionary_most_common_words
 limit 25;
 
 -- 5.Create copies of both tables just in case you accidentally delete the originals
@@ -19,21 +23,27 @@ create table dictionary.english_dictionary_most_common_words_copy
 as select * from dictionary.english_dictionary_most_common_words;
 
 -- 6.Rename column type to word_type and definition to word_def
-alter table dictionary.english_dictionary_master rename column type to word_type;
-alter table dictionary.english_dictionary_master rename column definition to word_def;
+alter table dictionary.english_dictionary_master 
+rename column type to word_type;
+alter table dictionary.english_dictionary_master 
+rename column definition to word_def;
 
--- 7.Update column word_type and word_def to remove " and .
-update table dictionary.english_dictionary_master set word_type = replace(word_type, '""', '');
-update table dictionary.english_dictionary_master set word_type = replace(word_type, '.', '');
-update dictionary.english_dictionary_master set word_def = replace(word_def, '""', '');
+-- 7.Update column word_type and word_def to remove 
+update table dictionary.english_dictionary_master 
+set word_type = replace(word_type, '""', '');
+update table dictionary.english_dictionary_master 
+set word_type = replace(word_type, '.', '');
+update dictionary.english_dictionary_master 
+set word_def = replace(word_def, '""', '');
 
 -- 8.Add column is_common to master table and update this column with 'yes' for common words 
-alter table dictionary.english_dictionary_master add column is_common varchar (6);
+alter table dictionary.english_dictionary_master 
+add column is_common varchar (6);
 
 update dictionary.english_dictionary_master
 set is_common = "yes"
-where word in
-(select distinct common_words from dictionary.english_dictionary_most_common_words);
+where word in (select distinct common_words from dictionary.english_dictionary_most_common_words);
 
-select * from dictionary.english_dictionary_master
+select * 
+from dictionary.english_dictionary_master
 limit 25;
