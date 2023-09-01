@@ -1,0 +1,55 @@
+create database database_name;
+drop database database_name;
+
+create schema database_name;
+drop schema database_name;
+
+/*create table table_name;
+(column1 datatype,
+column2 datatype,
+column3 datatype);*/
+
+create database mywork;
+
+create table mywork.EMPLOYEE_TEST(
+EMPLOYEE_ID int not null,
+FIRST_NAME varchar(75),
+LAST_NAME varchar (75),
+ADDRESS varchar (100),
+CITY varchar (30),
+STATE varchar (20),
+ZIP_CODE varchar (20),
+PHONE varchar (25),
+COUNTRY varchar (50),
+HIREDATE date,
+SALARY decimal (8,2),
+primary key (EMPLOYEE_ID));
+
+select *
+from mywork.employee_test;
+
+alter table table_name
+add column column_name datatype;
+
+alter table mywork.employee_test
+add column email varchar (50);
+
+alter table table_name
+drop column columb_name;
+
+alter table mywork.employee_test /*remove*/
+drop column email;
+
+drop table table_name; /*remove all the table*/
+
+insert into mywork.employee_test (emplotee_id, hiredate, last_name, first_name, phone, salary)
+values (99999, date '2023-09-01', 'Smith', 'Kathy', '415-999-9999', 100000.00);
+
+update mywork.employee_test /*update text*/
+set salary = (salary * 1.1);
+
+delete from table_name
+where condition;
+
+delete from mywork.employee_test
+where FIRST_NAME = 'Kathy';
