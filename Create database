@@ -40,7 +40,7 @@ drop column columb_name;
 alter table mywork.employee_test /*remove*/
 drop column email;
 
-drop table table_name; /*remove all the table*/
+drop table table_name; /*remove all table*/
 
 insert into mywork.employee_test (emplotee_id, hiredate, last_name, first_name, phone, salary)
 values (99999, date '2023-09-01', 'Smith', 'Kathy', '415-999-9999', 100000.00);
